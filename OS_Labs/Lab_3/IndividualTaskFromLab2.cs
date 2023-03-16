@@ -8,7 +8,7 @@ namespace Lab_3
 {
     internal class IndividualTaskFromLab2
     {
-        //private static Semaphore semaphore = new Semaphore(1, 1);
+        private static Semaphore semaphore = new Semaphore(1, 1);
         private static Random random = new Random();
 
         public static void Execute()
@@ -42,7 +42,7 @@ namespace Lab_3
                 return;
             }
 
-            //semaphore.WaitOne();
+            semaphore.WaitOne();
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -52,7 +52,9 @@ namespace Lab_3
                 }
             }
 
-            //semaphore.Release();
+            PrintArray(array);
+
+            semaphore.Release();
         }
 
         private static void ThrerdWorker2(object data)
@@ -64,7 +66,7 @@ namespace Lab_3
                 return;
             }
 
-            //semaphore.WaitOne();
+            semaphore.WaitOne();
 
             int minElement = array.Min();
             int maxElement = array.Max();
@@ -72,7 +74,7 @@ namespace Lab_3
             Console.WriteLine("Индекс минимального элемента массива = {0}, эелемент = {1}", Array.IndexOf(array, minElement), minElement);
             Console.WriteLine("Индекс максимального элемента массива = {0}, эелемент = {1}", Array.IndexOf(array, maxElement), maxElement);
 
-            //semaphore.Release();
+            semaphore.Release();
         }
 
         private static int[] SetArrayItems(int length)
@@ -96,6 +98,5 @@ namespace Lab_3
 
             Console.WriteLine();
         }
-
     }
 }
