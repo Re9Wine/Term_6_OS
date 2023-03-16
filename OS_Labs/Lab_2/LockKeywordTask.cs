@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab_2
+﻿namespace Lab_2
 {
     internal class LockKeywordTask
     {
         private static object syncToken = new object();
 
-        public static void execute()
+        public static void Execute()
         {
             int[] array = CreateArray();
             Console.WriteLine("Исходный массив:");
